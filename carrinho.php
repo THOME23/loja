@@ -4,7 +4,7 @@ protegerPagina();
 
 include 'includes/header.php';
 
-// Buscar itens do carrinho
+
 try {
     $conn = conectarDB();
     
@@ -83,5 +83,6 @@ try {
         </div>
     <?php endif; ?>
 </div>
+
 
 <?php include 'includes/footer.php'; ?>
