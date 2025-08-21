@@ -18,7 +18,7 @@ try {
     
     switch ($method) {
         case 'GET':
-            // Listar itens do carrinho
+            
             $stmt = $conn->prepare("SELECT c.*, p.nome, p.preco, p.imagem 
                                    FROM carrinho c
                                    JOIN produtos p ON c.produto_id = p.id
@@ -30,31 +30,31 @@ try {
             break;
             
         case 'POST':
-            // Adicionar item ao carrinho
+            
             $produtoId = intval($input['produto_id']);
             $quantidade = intval($input['quantidade']);
             
-            // Verificar se produto existe
+         
             $stmt = $conn->prepare("SELECT id FROM produtos WHERE id = ?");
             $stmt->execute([$produtoId]);
             if (!$stmt->fetch()) {
                 throw new Exception("Produto não encontrado");
             }
             
-            // Verificar se já está no carrinho
+           
             $stmt = $conn->prepare("SELECT id, quantidade FROM carrinho 
                                    WHERE usuario_id = ? AND produto_id = ?");
             $stmt->execute([$usuarioId, $produtoId]);
             $item = $stmt->fetch();
             
             if ($item) {
-                // Atualizar quantidade
+               
                 $novaQuantidade = $item['quantidade'] + $quantidade;
                 $stmt = $conn->prepare("UPDATE carrinho SET quantidade = ? 
                                        WHERE id = ?");
                 $stmt->execute([$novaQuantidade, $item['id']]);
             } else {
-                // Adicionar novo item
+                
                 $stmt = $conn->prepare("INSERT INTO carrinho 
                                        (usuario_id, produto_id, quantidade) 
                                        VALUES (?, ?, ?)");
@@ -65,7 +65,7 @@ try {
             break;
             
         case 'PUT':
-            // Atualizar quantidade
+            
             $itemId = intval($input['id']);
             $quantidade = intval($input['quantidade']);
             
@@ -85,7 +85,7 @@ try {
             break;
             
         case 'DELETE':
-            // Remover item do carrinho
+            
             $itemId = intval($_GET['id']);
             
             $stmt = $conn->prepare("DELETE FROM carrinho 
@@ -111,4 +111,5 @@ try {
         'message' => $e->getMessage()
     ]);
 }
+
 ?>
