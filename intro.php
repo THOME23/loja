@@ -1,11 +1,11 @@
 <?php
-// Configurações do banco de dados
+
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'techstore');
 define('DB_USER', 'usuario');
 define('DB_PASS', 'senha_segura');
 
-// Conexão com o banco de dados
+
 function conectarDB() {
     try {
         $conn = new PDO(
@@ -20,11 +20,12 @@ function conectarDB() {
     }
 }
 
-// Função para proteção contra SQL Injection
+
 function sanitize($data) {
     if (is_array($data)) {
         return array_map('sanitize', $data);
     }
     return htmlspecialchars(strip_tags(trim($data)));
 }
+
 ?>
