@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Celulares, Power Banks e Acessórios</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="script.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Tech<span>Store</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#ofertas">Ofertas</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+                <button id="cart-btn"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></button>
+                <button id="user-btn"><i class="fas fa-user"></i></button>
+            </div>
+        </div>
+        <div class="search-bar" id="search-bar">
+            <input type="text" placeholder="Pesquisar produtos...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>As Melhores Marcas de Eletrônicos</h2>
+                    <p>Celulares, Power Banks e Acessórios com os melhores preços</p>
+                    <a href="#produtos" class="btn">Comprar Agora</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories">
+            <div class="container">
+                <div class="category-card">
+                    <img src="imagens/celulares.jpg" alt="Celulares">
+                    <h3>Celulares</h3>
+                </div>
+                <div class="category-card">
+                    <img src="imagens/powerbanks.jpg" alt="Power Banks">
+                    <h3>Power Banks</h3>
+                </div>
+                <div class="category-card">
+                    <img src="imagens/acessorios.jpg" alt="Acessórios">
+                    <h3>Acessórios</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="products" id="produtos">
+            <div class="container">
+                <h2 class="section-title">Nossos Produtos</h2>
+                <div class="product-filters">
+                    <button class="filter-btn active" data-filter="todos">Todos</button>
+                    <button class="filter-btn" data-filter="celulares">Celulares</button>
+                    <button class="filter-btn" data-filter="powerbanks">Power Banks</button>
+                    <button class="filter-btn" data-filter="acessorios">Acessórios</button>
+                </div>
+                <div class="product-grid" id="product-grid">
+                    <!-- Produtos serão carregados via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section class="offers" id="ofertas">
+            <div class="container">
+                <h2 class="section-title">Ofertas Especiais</h2>
+                <div class="offer-slider">
+                    <div class="offer-slide">
+                        <img src="imagens/oferta1.jpg" alt="Oferta 1">
+                        <div class="offer-content">
+                            <h3>Power Bank Turbo 20.000mAh</h3>
+                            <p class="old-price">R$ 199,90</p>
+                            <p class="new-price">R$ 149,90</p>
+                            <a href="#" class="btn">Aproveitar Oferta</a>
+                        </div>
+                    </div>
+                    <!-- Mais ofertas podem ser adicionadas aqui -->
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <div class="feature-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Frete Grátis</h3>
+                    <p>Para compras acima de R$ 300,00</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Garantia</h3>
+                    <p>Todos os produtos com garantia</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>Parcelamento</h3>
+                    <p>Em até 12x sem juros</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Suporte</h3>
+                    <p>Atendimento 24/7</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-section">
+                <h3>TechStore</h3>
+                <p>A melhor loja de eletrônicos com os melhores preços e qualidade.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Termos de Serviço</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Trocas e Devoluções</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Rua dos Eletrônicos, 123</li>
+                    <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
+                    <li><i class="fas fa-envelope"></i> contato@techstore.com</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Assine para receber nossas ofertas.</p>
+                <form>
+                    <input type="email" placeholder="Seu e-mail">
+                    <button type="submit" class="btn">Assinar</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 TechStore. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-product-details">
+                <div class="modal-product-images">
+                    <img src="" alt="" id="modal-product-img">
+                </div>
+                <div class="modal-product-info">
+                    <h2 id="modal-product-name"></h2>
+                    <p class="modal-product-price" id="modal-product-price"></p>
+                    <p class="modal-product-description" id="modal-product-description"></p>
+                    <div class="quantity-selector">
+                        <button class="quantity-btn" id="decrease-qty">-</button>
+                        <input type="number" value="1" min="1" id="product-qty">
+                        <button class="quantity-btn" id="increase-qty">+</button>
+                    </div>
+                    <button class="btn" id="add-to-cart-btn">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Seu Carrinho</h3>
+            <span class="close-cart">&times;</span>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Itens do carrinho serão adicionados aqui -->
+        </div>
+        <div class="cart-total">
+            <p>Total: <span id="cart-total-price">R$ 0,00</span></p>
+            <button class="btn" id="checkout-btn">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
