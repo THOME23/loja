@@ -2,7 +2,7 @@
 require_once '../../config/auth.php';
 require_once '../../config/db.php';
 
-// Verificar se é admin
+
 if ($_SESSION['usuario_tipo'] !== 'admin') {
     header("Location: /");
     exit();
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $estoque = intval($_POST['estoque']);
     $destaque = isset($_POST['destaque']) ? 1 : 0;
     
-    // Validações
+  
     if (empty($nome)) {
         $erros[] = "O nome do produto é obrigatório";
     }
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erros[] = "O estoque não pode ser negativo";
     }
     
-    // Processar upload da imagem
+    
     $imagem = null;
     if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
         $extensao = strtolower(pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION));
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erros[] = "A imagem do produto é obrigatória";
     }
     
-    // Se não houver erros, salvar no banco
+  
     if (empty($erros)) {
         try {
             $conn = conectarDB();
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch (PDOException $e) {
             $erros[] = "Erro ao cadastrar produto: " . $e->getMessage();
             
-            // Se houve erro, apagar a imagem que foi enviada
+           
             if ($imagem && file_exists('../../imagens/produtos/' . $imagem)) {
                 unlink('../../imagens/produtos/' . $imagem);
             }
@@ -151,5 +151,6 @@ include '../../includes/admin-header.php';
         </form>
     <?php endif; ?>
 </div>
+
 
 <?php include '../../includes/admin-footer.php'; ?>
