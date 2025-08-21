@@ -2,27 +2,27 @@
 require_once '../../config/auth.php';
 require_once '../../config/db.php';
 
-// Verificar se é admin
+
 if ($_SESSION['usuario_tipo'] !== 'admin') {
     header("Location: /");
     exit();
 }
 
-// Paginação
+
 $pagina = isset($_GET['pagina']) ? max(1, intval($_GET['pagina'])) : 1;
 $porPagina = 10;
 $offset = ($pagina - 1) * $porPagina;
 
-// Buscar produtos
+
 try {
     $conn = conectarDB();
     
-    // Contar total
+    
     $stmt = $conn->query("SELECT COUNT(*) as total FROM produtos");
     $total = $stmt->fetchColumn();
     $totalPaginas = ceil($total / $porPagina);
     
-    // Buscar produtos
+    
     $stmt = $conn->prepare("SELECT * FROM produtos ORDER BY id DESC LIMIT ? OFFSET ?");
     $stmt->bindValue(1, $porPagina, PDO::PARAM_INT);
     $stmt->bindValue(2, $offset, PDO::PARAM_INT);
@@ -89,7 +89,7 @@ include '../../includes/admin-header.php';
 </div>
 
 <script>
-// Confirmar exclusão
+
 document.querySelectorAll('.btn-excluir').forEach(btn => {
     btn.addEventListener('click', function() {
         if (confirm('Tem certeza que deseja excluir este produto?')) {
@@ -98,5 +98,6 @@ document.querySelectorAll('.btn-excluir').forEach(btn => {
     });
 });
 </script>
+
 
 <?php include '../../includes/admin-footer.php'; ?>
