@@ -5,13 +5,13 @@ require_once '../config/db.php';
 try {
     $conn = conectarDB();
     
-    // Filtros e paginação
+    
     $categoria = isset($_GET['categoria']) ? sanitize($_GET['categoria']) : null;
     $busca = isset($_GET['busca']) ? sanitize($_GET['busca']) : null;
     $pagina = isset($_GET['pagina']) ? max(1, intval($_GET['pagina'])) : 1;
     $porPagina = 12;
     
-    // Construir a query
+    
     $sql = "SELECT * FROM produtos WHERE 1=1";
     $params = [];
     
@@ -26,17 +26,15 @@ try {
         $params[] = "%$busca%";
     }
     
-    // Contar total de produtos
+
     $stmt = $conn->prepare(str_replace('*', 'COUNT(*) as total', $sql));
     $stmt->execute($params);
     $total = $stmt->fetchColumn();
     
-    // Adicionar paginação
     $sql .= " LIMIT ?, ?";
     $params[] = ($pagina - 1) * $porPagina;
     $params[] = $porPagina;
     
-    // Buscar produtos
     $stmt = $conn->prepare($sql);
     $stmt->execute($params);
     $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -59,4 +57,5 @@ try {
         'error' => $e->getMessage()
     ]);
 }
+
 ?>
