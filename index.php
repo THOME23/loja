@@ -2,7 +2,7 @@
 require_once 'config/db.php';
 include 'includes/header.php';
 
-// Buscar produtos em destaque
+
 try {
     $conn = conectarDB();
     $stmt = $conn->query("SELECT * FROM produtos WHERE destaque = 1 LIMIT 8");
@@ -42,5 +42,6 @@ try {
         </div>
     </section>
 </div>
+
 
 <?php include 'includes/footer.php'; ?>
