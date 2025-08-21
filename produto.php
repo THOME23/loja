@@ -11,7 +11,7 @@ $id = intval($_GET['id']);
 try {
     $conn = conectarDB();
     
-    // Buscar produto
+    
     $stmt = $conn->prepare("SELECT * FROM produtos WHERE id = ?");
     $stmt->execute([$id]);
     $produto = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -21,7 +21,7 @@ try {
         exit();
     }
     
-    // Buscar avaliações
+    
     $stmt = $conn->prepare("SELECT a.*, u.nome as usuario_nome 
                            FROM avaliacoes a 
                            JOIN usuarios u ON a.usuario_id = u.id 
@@ -30,7 +30,7 @@ try {
     $stmt->execute([$id]);
     $avaliacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    // Calcular média de avaliações
+    
     $stmt = $conn->prepare("SELECT AVG(rating) as media FROM avaliacoes WHERE produto_id = ?");
     $stmt->execute([$id]);
     $media = $stmt->fetchColumn();
@@ -123,5 +123,6 @@ include 'includes/header.php';
         </div>
     <?php endif; ?>
 </div>
+
 
 <?php include 'includes/footer.php'; ?>
